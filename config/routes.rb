@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
   devise_for :users
 
+  resources :welcome do
+  end
+
   resources :jobs do
     resources :resumes
   end
 
-  root 'jobs#index'
+  root 'welcome#index'
 
   namespace :admin do
     resources :jobs do
@@ -14,8 +17,9 @@ Rails.application.routes.draw do
         post :hide
       end
 
-      resources :resumes 
+      resources :resumes
     end
   end
+
 
 end
